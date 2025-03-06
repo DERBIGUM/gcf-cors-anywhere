@@ -121,7 +121,13 @@ const middlewares = [
 
     // Rewrite Set-Cookie header
     _.update(axiosRes, 'headers.set-cookie', cookies => {
-      const rewriteCookie = cookie => cookie.replaceAll(/; (Secure|Partitioned|SameSite=[^;]+)/imsg, '') + '; SameSite=None; Secure; Partitioned'
+      const rewriteCookie = cookie => {
+        if(cookie) {
+          return cookie.replaceAll(/; (Secure|Partitioned|SameSite=[^;]+)/imsg, '') + '; SameSite=None; Secure; Partitioned';
+        } else {
+          return cookie;
+        }
+      };
       return _.isArray(cookies) ? _.map(cookies, rewriteCookie) : rewriteCookie(cookies)
     })
 

@@ -21,7 +21,7 @@ The url to proxy is taken from the search params `?u=`, validated and proxied.
     ```
 6. Deploy this function. YOU NEED TO CHANGE `PROJECT_ID` AND `GCP_REGION`.
     ```bash
-    wget https://github.com/taichunmin/gcf-cors-anywhere/archive/master.zip -O gcf-cors-anywhere.zip
+    wget https://github.com/DERBIGUM/gcf-cors-anywhere/archive/master.zip -O gcf-cors-anywhere.zip
     unzip gcf-cors-anywhere.zip
     # YOU NEED TO CHANGE `PROJECT_ID` AND `GCP_REGION`.
     gcloud functions deploy cors-anywhere --allow-unauthenticated --entry-point=main --gen2 --max-instances=1 --memory=128Mi --no-user-output-enabled --project=PROJECT_ID --region=GCP_REGION --runtime=nodejs18 --timeout=60s --trigger-http --source ./gcf-cors-anywhere-master
